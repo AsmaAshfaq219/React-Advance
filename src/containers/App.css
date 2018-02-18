@@ -1,0 +1,17 @@
+.App {
+  text-align: center;
+}
+.App > button {
+  padding: 10px;
+  background-color: lightseagreen;
+  font-weight: bold;
+  margin-bottom: 20px;
+} 
+.Red > button{
+  background-color: green; 
+}
+
+/* @keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+} */
