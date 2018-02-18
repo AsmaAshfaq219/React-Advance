@@ -3,11 +3,11 @@ import PersonStyle from './Persons.css';
 import Wrapper from '../../hoc/Wrapper';
 
 const Persons = (props) => {
-    return(
+    return (
         <div>
-        <button onClick = {props.clicked}>x</button>  
-        <p>Hello {props.name}, your age is {props.age}</p>
-        <input type='text' value={props.name}  onChange= {props.changeName}/>
+            <button onClick={props.clicked}>x</button>
+            <p>Hello {props.name}, your age is {props.age}</p>
+            <input type='text' value={props.name} onChange={props.changeName} />
         </div>
     );
 }

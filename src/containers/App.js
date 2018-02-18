@@ -17,74 +17,74 @@ class App extends PureComponent {
 
   onChangeHandler = (event, id) => {
     const persons = [...this.state.persons];
-    const index = persons.findIndex ((val) => val.id === id) //Could have also worked by passing index directly 
-    const person = {...persons[index]}
+    const index = persons.findIndex((val) => val.id === id) //Could have also worked by passing index directly 
+    const person = { ...persons[index] }
     person.name = event.target.value;
     persons[index] = person;
-    this.setState ({
-      persons : persons 
+    this.setState({
+      persons: persons
     })
   }
-deleteOnClick = (index) => {
-  const persons = [...this.state.persons]; //doing it immutabe way
-  persons.splice(index,1);
-  this.setState({
-    persons : persons
-  })
-}
+  deleteOnClick = (index) => {
+    const persons = [...this.state.persons]; //doing it immutabe way
+    persons.splice(index, 1);
+    this.setState({
+      persons: persons
+    })
+  }
 
-toggleHandler = () => {
-  // console.log(this.state.toggle);
-  //To avoid race condition as setState is async
-  this.setState((prevState) => ({
-    toggle: !(prevState.toggle)
-  })
-  )
-}
+  toggleHandler = () => {
+    // console.log(this.state.toggle);
+    //To avoid race condition as setState is async
+    this.setState((prevState) => ({
+      toggle: !(prevState.toggle)
+    })
+    )
+  }
 
-componentWillMount(){
-  console.log(`Component will Mount`);
-}
+  componentWillMount() {
+    console.log(`Component will Mount`);
+  }
 
-componentDidMount(){
-  console.log(`Component Did Mount`);
-  // this.input.focus();
-}
+  componentDidMount() {
+    console.log(`Component Did Mount`);
+    // this.input.focus();
+  }
 
-componentWillUnmount(){
-  console.log(`Component will Unmount`);
-}
-//*** Using PureComponent so this wont execute ***
-// shouldComponentUpdate(nextProp, nextState){
-//   console.log(`Should Component Update`);
-//  return true;
-// }
-componentWillUpdate(){
-  console.log(`Component Will Update`);
-}
-componentDidUpdate(){
-  console.log(`Component Did Update`);
-}
+  componentWillUnmount() {
+    console.log(`Component will Unmount`);
+  }
+  //*** Using PureComponent so this wont execute ***
+  // shouldComponentUpdate(nextProp, nextState){
+  //   console.log(`Should Component Update`);
+  //  return true;
+  // }
+  componentWillUpdate() {
+    console.log(`Component Will Update`);
+  }
+  componentDidUpdate() {
+    console.log(`Component Did Update`);
+  }
 
   render() {
     const classes = [AppStyle.App];
-    if(this.state.toggle){
+    if (this.state.toggle) {
       classes.push(AppStyle.Red)
     }
     return (
       <Fragment>
-      <div className = {classes.join(' ')}>
-        <button onClick = {this.toggleHandler}>Just Click</button>
-        <h1>Advance React! Boom</h1>
-        <button onClick ={this.toggleHandler}>Toggle</button>
-        <ErrorBoundary>
-        <Person persons = {this.state.persons} 
-                toggleValue = {this.state.toggle}
-                changeName = {this.onChangeHandler}
-                clicked = {this.deleteOnClick}/>
-        </ErrorBoundary>
-        {/* <input ref = {(inp) => {this.input = inp}} type='text'/> */}
-      </div>
+        <div className={classes.join(' ')}>
+          <button onClick={this.toggleHandler}>Just Click</button>
+          <h1>Advance React! Boom</h1>
+          <button onClick={this.toggleHandler}>Toggle</button>
+          <ErrorBoundary>
+            <Person persons={this.state.persons}
+              toggleValue={this.state.toggle}
+              changeName={this.onChangeHandler}
+              clicked={this.deleteOnClick} />
+          </ErrorBoundary>
+          {/* <input ref = {(inp) => {this.input = inp}} type='text'/> */}
+        </div>
       </Fragment>
     );
   }
